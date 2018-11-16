@@ -23,7 +23,6 @@ var stopwatch = {
   lap: 1,
 
   reset: function() {
-
     stopwatch.time = 0;
     stopwatch.lap = 1;
 
@@ -32,36 +31,30 @@ var stopwatch = {
   },
 
   start: function() {
-
     if (!clockRunning) {
       clockRunning = true;
       intervalId = setInterval(stopwatch.count, 1000);
     }
 
   },
-  stop: function() {
 
-    clearInterval(intervalId);
+  stop: function() {
     clockRunning = false;
+    clearInterval(intervalId);
   },
 
   recordLap: function() {
-
     let currentTime = stopwatch.timeConverter(stopwatch.time);
     $("#laps").append("<div>Lap " + stopwatch.lap + " " + currentTime + "</div>");
     stopwatch.lap++;
   },
   count: function() {
-
     stopwatch.time++;
     let currentTime = stopwatch.timeConverter(stopwatch.time);
-
     $("#display").text(currentTime);
   },
 
-
   timeConverter: function(t) {
-    //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
     var minutes = Math.floor(t / 60);
     var seconds = t - (minutes * 60);
 
